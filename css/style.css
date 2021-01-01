@@ -1,0 +1,66 @@
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+
+  /*background-color: #000000;
+  background-image: url("/images/batman.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%; */
+}
+
+#books img,
+#book img {
+  width: 100%;
+}
+
+.custom-spacing {
+  margin-left: 20px;
+}
+
+.well,
+.list-group-item,
+.jumbotron {
+  background: #17212a !important;
+
+  color: #999;
+  border: 1px solid #adff2f;
+}
+
+#go_buttton {
+  margin-top: 20px !important;
+}
+
+#preloader {
+  margin: 100px 46%;
+}
+
+@media (min-width: 960px) {
+  #books .col-md-3 .well {
+    height: 420px;
+  }
+
+  #books img {
+    height: 250px;
+  }
+  #book img {
+    height: 400px;
+  }
+}
+
+body {
+  color: #17212a;
+  background-color: #17212a;
+}
+
+/* canvas {
+  display: block;
+} */
+
+/* #particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+} */

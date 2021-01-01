@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books Info</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/intro.css">
+</head>
+<body>
+
+	<!-- <div class="wrapper">
+        <h1>Hello there!</h1>
+    </div> -->
+    
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">Books Finder</a> 
+			</div>
+		</div>
+	</nav>
+	
+	<div class="container">
+		<div class="jumbotron">
+			<h3 class="text-center">Search for any Book</h3>
+			<form id="searchForm">
+				<input type="text" name="search" id="searchText" class="form-control" placeholder="Enter search term Here">
+			</form>
+		</div>
+	</div>
+
+
+	
+	
+
+	<div id="preloader" class="hidden">
+		<img src="assets/loader.gif" />
+	</div>
+
+	<div id="heade" ><div id="particles-js"></div></div>
+
+	<div class="container">
+		
+		<div class="row" id="books">
+			
+		</div>
+	</div>
+
+
+
+	<!-- intro  -->
+	<div class="welcome-section content-hidden" id="test">
+        <div class="content-wrap">
+            <ul class="fly-in-text">
+				<li>B</li>
+				<li>O</li>
+				<li>O</li>
+				<li>K</li>
+				<li> </li>
+				<li>F</li>
+				<li>I</li>
+				<li>N</li>
+				<li>D</li>
+				<li>E</li>
+				<li>R</li>
+
+            </ul>
+            <a href="#" class="enter-button">Find Here</a>
+        </div>
+
+    </div>
+
+<script
+	src="https://code.jquery.com/jquery-3.2.0.min.js"
+	integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I="
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var welcomeSection=$('.welcome-section'),
+        enterButton=welcomeSection.find('.enter-button')
+        setTimeout(function(){
+            welcomeSection.removeClass('content-hidden');
+        },800);
+		
+        enterButton.on('click',function(e){
+            e.preventDefault();
+            welcomeSection.addClass('content-hidden').fadeOut();
+        });
+    });
+</script>
+<script src="./js/particle.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/particles.js"></script>
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+</body>
+</html>
