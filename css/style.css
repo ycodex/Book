@@ -3,11 +3,11 @@
   width: 100%;
   height: 50%;
 
-  /*background-color: #000000;
-  background-image: url("/images/batman.jpg");
+  /* background-color: #000000; */
+
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50% 50%; */
+  background-position: 50% 50%;
 }
 
 #books img,
@@ -22,10 +22,15 @@
 .well,
 .list-group-item,
 .jumbotron {
-  background: #17212a !important;
+  background-color: transparent;
 
-  color: #999;
+  color: rgb(235, 231, 231);
   border: 1px solid #adff2f;
+}
+
+.text-centre,
+.form-control {
+  opacity: default;
 }
 
 #go_buttton {
@@ -53,6 +58,7 @@ body {
   color: #17212a;
   background-color: #17212a;
   font-family: "Karla", sans-serif;
+  background-image: url("/img/background.jpg");
 }
 
 /* canvas {
@@ -65,3 +71,7 @@ body {
   height: 100%;
   
 } */
+
+#hide {
+  visibility: hidden;
+}

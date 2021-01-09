@@ -5,7 +5,8 @@ $(document).ready(() => {
 		e.preventDefault();
 	})
 });
-
+var book_title;
+var buy_link;
 function getBooks(searchText) {
 	$('#preloader').removeClass('hidden');
 	axios.get('https://www.googleapis.com/books/v1/volumes?q=' + searchText)
@@ -22,10 +23,19 @@ function getBooks(searchText) {
 			} else {
 				output += "<img src= 'img/book.jpg' />";
 			}
-			var book_title =  book.volumeInfo.title.length > 35 ? book.volumeInfo.title.substring(0, 35) + '...' : book.volumeInfo.title;
+			book_title =  book.volumeInfo.title.length > 32 ? book.volumeInfo.title.substring(0, 32) + '...' : book.volumeInfo.title;
+			buy_link = book.saleInfo.buyLink;
+			
 			output += "<h3 class='text-center'>" + book_title +"</h3>";
-			output += "<a class='btn btn-danger' href='#' onclick= bookselected('"+ book.id +"')>View</a>";		
-			output += "</div>";
+			output += "<form action='addWish.php' method='post'>"
+			
+			output += "<a class='btn btn-danger' href='#' onclick= bookselected('"+ book.id +"') >View</a>  ";
+			
+			output += "<button type='submit' class='btn btn-danger'> &#128151 </button>" ;
+			output += "<input id='hide' type='text' name='book' value='"+book.id+"'>  ";	
+			output += "<input id='hide' type='text' name='name' value='"+book_title+"'> ";	
+				      
+			output += " </form> </div>";
 			output += "</div>";
 		});
 		$('#preloader').addClass('hidden');
@@ -39,16 +49,20 @@ function getBooks(searchText) {
 function bookselected(id) {
 	//alert(id)
 	sessionStorage.setItem('bookId' , id);
-	window.open('book.html', '_blank');
+	window.open('book.php', '_blank');
 	return false;
 }
 
 function getbook() {
+	
+
+	//var book_title =  book.volumeInfo.title.length > 32 ? book.volumeInfo.title.substring(0, 32) + '...' : book.volumeInfo.title;
 	var id = sessionStorage.getItem('bookId');
 	axios.get('https://www.googleapis.com/books/v1/volumes/' + id)
 	.then((response) => {
 		$('#book').removeClass('hidden');
 		console.log(response);	
+		var buy = response.data.saleInfo;
 		var info = response.data.volumeInfo;
 		var cat = info.categories;
 		console.log(cat);
@@ -60,8 +74,18 @@ function getbook() {
 			output += "<img src= " + info.imageLinks.thumbnail + " /><br/>";
 		}
 		output += "<br>"
-		output += "<a class='btn btn-danger' id='go_button' href='index.html'>Go Back To Search</a>";
-		output += "</div>";
+		output += "<a class='btn btn-danger' id='go_button' href='display.php'>Go Back To Search</a> ";
+		output += "<form action='addWish.php' method='post'>"
+		output += "<button type='submit' class='btn btn-danger'> &#128151 </button> " ;
+		if(buy.buyLink == undefined){
+			output += "<a class='btn btn-danger' id='go_button' onclick='notAvail()'>Buy</a>";
+		}
+		else{
+		output += "<a class='btn btn-danger' id='go_button' href='"+ buy.buyLink +"'>Buy</a>";
+		}
+		output += "<input id='hide' type='text' name='book' value='"+ book.id +"'>  ";	
+		output += "<input id='hide' type='text' name='name' value='"+book_title+"'> ";
+		output += "</form> </div>";
 		output += "<div class='col-md-8'>";
 		output += "<h2><strong>Title:</strong>"+ info.title + "</h2>";
 		output += "<h3><strong>SubTitle:</strong>" + info.subtitle + "</h3>";
@@ -87,4 +111,7 @@ function getbook() {
 	.catch((err) => {
 		console.log(err);
 	});
+}
+function notAvail(){
+	alert("Currently Not Available")
 }

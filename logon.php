@@ -10,13 +10,19 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
+
+
+
 <body>
+
 <div id="heade" ><div id="particles-js" style="height: 100%;"></div></div>
-<div class="login-reg-panel">
+
+    <div class="login-reg-panel">
+       
 		<div class="login-info-box">
 			<h2>Have an account?</h2>
 			<p>Thats Good</p>
-			<label id="label-register" for="log-reg-show">Login</label>
+			<label id="label-register" for="log-reg-show" >Login</label>
 			<input type="radio" name="active-log-panel" id="log-reg-show"  checked="checked">
 		</div>
 							
@@ -26,24 +32,32 @@
 			<label id="label-login" for="log-login-show">Register</label>
 			<input type="radio" name="active-log-panel" id="log-login-show">
 		</div>
-							
+			
 		<div class="white-panel">
+		<form action="login.php" method="post">	
 			<div class="login-show">
 				<h2>LOGIN</h2>
-				<input type="text" placeholder="Email">
-				<input type="password" placeholder="Password">
-				<input type="button" value="Login">
+				<input type="text" placeholder="Email" name="email" >
+				<input type="password" placeholder="Password" name="pass">
+                <button type="submit">   <input type="button" value="Login"> </button>
+                
 				<a href="">Forgot password?</a>
 			</div>
+		</form>
+
+		<form action="signin.php" method="post">	
 			<div class="register-show">
 				<h2>REGISTER</h2>
-				<input type="text" placeholder="Email">
-				<input type="password" placeholder="Password">
-				<input type="password" placeholder="Confirm Password">
-				<input type="button" value="Register">
+				<input type="text" placeholder="Name" name="name">
+				<input type="text" placeholder="Email" name="email">
+				<input type="password" placeholder="Password" name="pass">
+				<input type="password" placeholder="Confirm Password" >
+				<button type="submit" > <input type="button" value="Register"> </button>
 			</div>
+		</form>
 		</div>
-	</div>
+    </div>
+
 	<script src="./js/particle.js"></script>
 	<script src="./js/app.js"></script>
 	<script src="./js/particles.js"></script>
